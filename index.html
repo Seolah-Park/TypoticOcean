@@ -23,22 +23,22 @@
       width: 100%;  /* 화면의 크기에 맞게 조정 */
       height: 100%; /* 화면의 크기에 맞게 조정 */
       object-fit: contain; /* 비율을 유지하며 꽉 차지 않게 설정 */
-      animation: gifAnimation 3s forwards;
-      animation-play-state: paused; /* 애니메이션을 정지 상태로 설정 */
+      opacity: 0;  /* 애니메이션 초기 상태 */
     }
 
     /* 애니메이션 정의 */
     @keyframes gifAnimation {
       0% {
-        opacity: 0;
+        opacity: 1; /* 첫 번째 프레임이 보이도록 설정 */
       }
       33% {
-        opacity: 1;
+        opacity: 1; /* 애니메이션이 진행되는 동안 보이도록 */
       }
       100% {
-        opacity: 0;
+        opacity: 0; /* 마지막 프레임을 3초 동안 유지한 후 사라짐 */
       }
     }
+
   </style>
 </head>
 <body>
@@ -50,15 +50,16 @@
 
     // GIF가 로드되면 첫 번째 프레임을 2초 동안 정지
     gifElement.onload = function() {
-      // 첫 번째 프레임 2초 정지
+      // 첫 번째 프레임 2초 정지 후 애니메이션 시작
       setTimeout(function() {
-        // 애니메이션을 시작
-        gifElement.style.animationPlayState = "running"; // 애니메이션을 실행 상태로 변경
-      }, 2000); // 첫 번째 프레임 정지 2초 후 재생 시작
+        // 애니메이션을 3초에 걸쳐서 한번만 실행
+        gifElement.style.animation = "gifAnimation 3s forwards";
+        gifElement.style.opacity = 1;  // 애니메이션을 보이도록 설정
+      }, 2000); // 첫 번째 프레임 정지 2초 후 애니메이션 시작
     };
 
-    // 페이지 이동을 위한 타이머
-    const gifDuration = 8 * 1000; // 총 8초 (2초 정지 + 3초 재생 + 3초 정지)
+    // 페이지 이동을 위한 타이머 (총 8초)
+    const gifDuration = 8 * 1000; // 총 8초 (2초 정지 + 3초 재생 + 3초 마지막 프레임)
 
     setTimeout(function() {
       // TypoticOcean.html로 이동
@@ -67,7 +68,3 @@
   </script>
 </body>
 </html>
-
-
-
-
