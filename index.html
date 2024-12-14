@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loading Page</title>
   <style>
-    /* 전체 페이지 고정 */
+    /* 전체 페이지 크기 고정 1920x1080 */
     html, body {
       margin: 0;
       padding: 0;
-      width: 100%; /* 화면의 가로 크기 */
-      height: 100%; /* 화면의 세로 크기 */
+      width: 1920px;  /* 고정된 너비 */
+      height: 1080px; /* 고정된 높이 */
       overflow: hidden; /* 스크롤 방지 */
-      background-color: #ffff; /* 배경 흰색 */
+      background-color: #000; /* 배경 검정색 */
       display: flex; /* 중앙 정렬을 위한 flexbox */
       justify-content: center; /* 가로 중앙 정렬 */
       align-items: center; /* 세로 중앙 정렬 */
@@ -20,9 +20,9 @@
 
     /* GIF 이미지 스타일 */
     img {
-      width: 1920*0.95px;  /* 고정된 너비 */
-      height: 1080*0.95px; /* 고정된 높이 */
-      object-fit: contain; /* 비율 유지하며 꽉 차지 않게 설정 */
+      width: 100%;  /* 화면의 크기에 맞게 조정 */
+      height: 100%; /* 화면의 크기에 맞게 조정 */
+      object-fit: contain; /* 비율을 유지하며 꽉 차지 않게 설정 */
     }
   </style>
 </head>
@@ -52,5 +52,6 @@
   </script>
 </body>
 </html>
+
 
 
