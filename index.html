@@ -20,7 +20,33 @@
       width: 100%;
       height: 100%;
       object-fit: cover; /* 비율 유지하며 꽉 채우기 */
+      animation: gifAnimation 10s forwards;
     }
+
+    /* 애니메이션 정의 */
+    @keyframes gifAnimation {
+      0% {
+        /* 첫 번째 프레임 정지 */
+        content: url('loading.gif');
+      }
+      20% {
+        /* 첫 번째 프레임 유지, 2초 동안 정지 */
+        content: url('loading.gif');
+      }
+      20.01% {
+        /* GIF 재생 시작 */
+        content: url('loading.gif');
+      }
+      60% {
+        /* GIF 재생 중 */
+        content: url('loading.gif');
+      }
+      100% {
+        /* 마지막 프레임 유지, 4초 동안 보여주기 */
+        content: url('loading.gif');
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -28,8 +54,8 @@
   <img src="loading.gif" alt="Loading Animation">
 
   <script>
-    // GIF 재생 시간이 끝나면 다음 페이지로 이동
-    const gifDuration = 2 * 1000; // 2초 (60프레임 / FPS 30)
+    // GIF 재생 시간이 끝난 뒤 4초 후 다음 페이지로 이동
+    const gifDuration = 10 * 1000; // 총 10초 (2초 정지 + 4초 재생 + 4초 정지)
 
     setTimeout(function() {
       // TypoticOcean.html로 이동
@@ -38,3 +64,4 @@
   </script>
 </body>
 </html>
+
