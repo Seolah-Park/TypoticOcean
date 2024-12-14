@@ -1,35 +1,527 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typotic Ocean</title>
+  <style>
+    /* 전체 페이지 크기 고정 1920x1080 */
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      background-color: #000; /* 배경 색을 검정색으로 설정 */
+    }
+
+    /* 배경 이미지 설정 */
+    body {
+      background-image: url('background.png');
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      background-position: top center;
+      min-height: 100vh;
+    }
+
+    /* 버튼 이미지 설정 */
+    #button {
+      position: absolute;
+      top: 35px;
+      left: 10px;
+      width: 60px;  /* 버튼 크기 1/3 크기 조정 */
+      height: 60px; /* 버튼 크기 1/3 크기 조정 */
+      background-image: url('Qbutton.png');
+      background-size: cover;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    /* 안내문 이미지 설정 */
+    #memo {
+      position: absolute;
+      top: 115px;
+      left: 35px;
+      transform: translateY(-50%);
+      width: 500px;  /* 크기 변경: 안내문 박스 크기 충분히 설정 */
+      height: 500px; /* 크기 변경: 안내문 박스 크기 충분히 설정 */
+      background-image: url('QbuttonMemo.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: none;
+      z-index: 999;
+    }
+
+/* FishShape 이미지 설정 */
+    .fish-shape1 {
+      position: absolute;
+      margin-top: 40%; /* 화면의 적절한 위치 */
+      left: 100%; /* 화면 오른쪽 밖에서 시작 */
+      width: 250px;
+      height: auto;
+      
+    }
+
+    .fish-shape2 {
+      position: absolute;
+      margin-top: 45%;
+      left: 100%; /* 화면 오른쪽 밖에서 시작 */
+      width: 320px;
+      height: auto;
+    }
+
+    .fish-shape3 {
+      position: absolute;
+      margin-top: 50%;
+      left: 30%;  /* 가운데 정렬 */
+      width: 300px;
+      height: auto;
+    }
+
+    .fish-shape4 {
+      position: absolute;
+      margin-top: 65%;
+      left: 80%;
+      width: 300px;
+      height: auto;
+    }
+
+    .fish-shape5 {
+      position: absolute;
+      margin-top: 77%;
+      left: 30%;
+      width: 100px;
+      height: auto;
+    }
+
+    .fish-shape6 {
+      position: absolute;
+      margin-top: 85%;
+      left: 30%;
+      width: 350px;
+      height: auto;
+    }
+
+/*여기부터 심해어*/
+    .fish-shape7 {
+      position: absolute;
+      margin-top: 125%;
+      left: 50%;
+      width: 250px;
+      height: auto;
+    }
+
+    .fish-shape8 {
+      position: absolute;
+      margin-top: 140%;
+      left: 50%;
+      width: 280px;
+      height: auto;
+    }
+
+    .fish-shape9 {
+      position: absolute;
+      margin-top: 150%;
+      left: 50%;
+      width: 320px;
+      height: auto;
+    }
+
+    .fish-shape10 {
+      position: absolute;
+      margin-top: 168%;
+      left: 50%;
+      width: 240px;
+      height: auto;
+    }
+
+    .fish-shape11 {
+      position: absolute;
+      margin-top: 175%;
+      left: 50%;
+      width: 320px;
+      height: auto;
+    }
+
+    .fish-shape12 {
+      position: absolute;
+      margin-top: 180%;
+      left: 50%;
+      width: 270px;
+      height: auto;
+    }
+
+    .fish-shape13 {
+      position: absolute;
+      margin-top: 190%;
+      left: 30%;
+      width: 280px;
+      height: auto;
+    }
+
+    .fish-shape14 {
+      position: absolute;
+      margin-top: 195%;
+      left: 80%;
+      width: 320px;
+      height: auto;
+    }
+
+    .fish-shape15 {
+      position: absolute;
+      margin-top: 200%;
+      left: 60%;
+      width: 240px;
+      height: auto;
+    }
+
+    .fish-shape16 {
+      position: absolute;
+      margin-top: 210%;
+      left: 40%;
+      width: 280px;
+      height: auto;
+    }
+
+    .fish-shape17 {
+      position: absolute;
+      margin-top: 215%;
+      left: 60%;
+      width: 430px;
+      height: auto;
+    }
+  </style>
 </head>
-
 <body>
-   <div id="wrapper">
-      <!-- Sidebar -->
-      <div id="sidebar-wrapper">
-         <div class="sidebar-content">
-            <div class="gray-box fish-picture"></div>
-            <div class="gray-box font-picture"></div>
-            <div class="text-section">
-               <p>수심과 목</p>
-               <p>글자의 특징</p>
-               <p>만든 사람</p>
-            </div>
-            <div class="link-section">
-               <a href="https://example.com" target="_blank">글자 만든 사람의 웹페이지로 가기</a>
-            </div>
-         </div>
-      </div>
-      <!-- Page Content -->
-      <div id="page-content-wrapper">
-         <div class="container-fluid xyz">
-            <div class="row">
-               <div class="col-lg-12">
-                  <h1></h1>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</body>
 
+  <!-- 버튼 이미지 -->
+  <div id="button"></div>
+
+  <!-- 안내문 이미지 -->
+  <div id="memo"></div>
+
+
+<!-- FishShape 이미지들 -->
+  <img src="FishShape/FishShape1.png" class="fish-shape1" alt="FishShape1">
+  <img src="FishShape/FishShape2.png" class="fish-shape2" alt="FishShape2">
+  <img src="FishShape/FishShape3.png" class="fish-shape3" alt="FishShape3">
+  <img src="FishShape/FishShape4.png" class="fish-shape4" alt="FishShape4">
+  <img src="FishShape/FishShape5.png" class="fish-shape5" alt="FishShape5">
+  <img src="FishShape/FishShape6.png" class="fish-shape6" alt="FishShape6">
+  <img src="FishShape/FishShape7.png" class="fish-shape7" alt="FishShape7">
+  <img src="FishShape/FishShape8.png" class="fish-shape8" alt="FishShape8">
+  <img src="FishShape/FishShape9.png" class="fish-shape9" alt="FishShape9">
+  <img src="FishShape/FishShape10.png" class="fish-shape10" alt="FishShape10">
+  <img src="FishShape/FishShape11.png" class="fish-shape11" alt="FishShape11">
+  <img src="FishShape/FishShape12.png" class="fish-shape12" alt="FishShape12">
+  <img src="FishShape/FishShape13.png" class="fish-shape13" alt="FishShape13">
+  <img src="FishShape/FishShape14.png" class="fish-shape14" alt="FishShape14">
+  <img src="FishShape/FishShape15.png" class="fish-shape15" alt="FishShape15">
+  <img src="FishShape/FishShape16.png" class="fish-shape16" alt="FishShape16">
+  <img src="FishShape/FishShape17.png" class="fish-shape17" alt="FishShape17">
+
+
+  <script>
+    var isMemoVisible = false;  // 안내문이 현재 보이는지 여부를 추적
+
+    // 버튼 클릭 시 안내문 이미지 표시 및 숨기기
+    document.getElementById('button').addEventListener('click', function() {
+      var memo = document.getElementById('memo');
+      
+      // 안내문이 보이지 않는 상태라면
+      if (!isMemoVisible) {
+        memo.style.display = 'block';  // 안내문 보이기
+        isMemoVisible = true;  // 안내문이 보임 상태로 변경
+      } else {
+        memo.style.display = 'none';  // 안내문 숨기기
+        isMemoVisible = false;  // 안내문이 보이지 않는 상태로 변경
+      }
+    });
+
+    // 이미지의 세로 비율 계산
+    var img = new Image();
+    img.src = 'background.png'; // 이미지 경로
+    img.onload = function() {
+      var imgWidth = img.width;
+      var imgHeight = img.height;
+
+      // 이미지 비율 계산
+      var aspectRatio = imgHeight / imgWidth;
+
+      // 페이지 세로 길이를 이미지의 세로 길이에 맞게 계산
+      var bodyWidth = window.innerWidth;  // 현재 화면 가로 길이
+      var bodyHeight = bodyWidth * aspectRatio;  // 이미지 비율에 맞춰서 세로 길이 계산
+
+      // 페이지의 세로 길이를 이미지 비율에 맞게 조정
+      document.documentElement.style.height = bodyHeight + 'px';
+      document.body.style.height = bodyHeight + 'px';
+
+      // 스크롤 시 배경 이미지의 위치를 조정하여 마지막 부분이 웹페이지 하단과 맞춰지도록 설정
+      window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY;
+        var bodyHeight = document.body.offsetHeight;
+        var windowHeight = window.innerHeight;
+
+        // 스크롤이 끝까지 내려갔을 때 마지막 부분이 웹페이지 하단에 맞춰지도록 설정
+        if (scrollPosition + windowHeight >= bodyHeight) {
+          document.body.style.backgroundPosition = "bottom center";
+        } else {랴노
+          // 그 외의 경우에는 이미지를 위쪽에 맞춤
+          document.body.style.backgroundPosition = "top center";
+        }
+      });
+    };
+
+  // FishShape1 이미지 움직임
+  const fishShape1 = document.querySelector('.fish-shape1');
+  let fishLeftPosition1 = 300; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape1() {
+    fishLeftPosition1 -= 1; // 이동 속도 설정 (2px씩 감소)
+    fishShape1.style.left = fishLeftPosition1 + 'px';
+    // fishLeftPosition1이 -280 이하가 되면 위치를 초기화하고 애니메이션을 다시 시작
+  if (fishLeftPosition1 <= -280) {
+    fishLeftPosition1 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape1); // 애니메이션 계속 실행
+}
+moveFishShape1(); // 애니메이션 시작
+
+  // FishShape2 이미지 움직임
+  const fishShape2 = document.querySelector('.fish-shape2');
+  let fishLeftPosition2 = 500; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape2() {
+    fishLeftPosition2 -= 1.2; // 이동 속도 설정 (3px씩 감소)
+    fishShape2.style.left = fishLeftPosition2 + 'px';
+    // fishLeftPosition1이 -280 이하가 되면 위치를 초기화하고 애니메이션을 다시 시작
+  if (fishLeftPosition2 <= -400) {
+    fishLeftPosition2 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape2); // 애니메이션 계속 실행
+}
+moveFishShape2(); // 애니메이션 시작
+
+  // FishShape3 이미지 움직임
+  const fishShape3 = document.querySelector('.fish-shape3');
+  let fishLeftPosition3 = 800; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape3() {
+    fishLeftPosition3 -= 0.5; // 이동 속도 설정 (4px씩 감소)
+    fishShape3.style.left = fishLeftPosition3 + 'px';
+    // fishLeftPosition1이 -280 이하가 되면 위치를 초기화하고 애니메이션을 다시 시작
+  if (fishLeftPosition3 <= -280) {
+    fishLeftPosition3 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape3); // 애니메이션 계속 실행
+}
+moveFishShape3(); // 애니메이션 시작
+
+  // FishShape4 이미지 움직임
+  const fishShape4 = document.querySelector('.fish-shape4');
+  let fishLeftPosition4 = 400; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape4() {
+    fishLeftPosition4 -= 0.7; // 이동 속도 설정 (2px씩 감소)
+    fishShape4.style.left = fishLeftPosition4 + 'px';
+    if (fishLeftPosition4 <= -320) {
+    fishLeftPosition4 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape4); // 애니메이션 계속 실행
+}
+  moveFishShape4(); // 애니메이션 시작
+
+  // FishShape5 이미지 움직임
+  const fishShape5 = document.querySelector('.fish-shape5');
+  let fishLeftPosition5 = window.innerWidth; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape5() {
+    fishLeftPosition5 -= 0.5; // 이동 속도 설정 (1px씩 감소)
+    fishShape5.style.left = fishLeftPosition5 + 'px';
+    if (fishLeftPosition5 <= -180) {
+    fishLeftPosition5 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape5); // 애니메이션 계속 실행
+}
+  moveFishShape5(); // 애니메이션 시작
+
+  // FishShape6 이미지 움직임
+  const fishShape6 = document.querySelector('.fish-shape6');
+  let fishLeftPosition6 = 300; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape6() {
+    fishLeftPosition6 -= 0.7; // 이동 속도 설정 (3px씩 감소)
+    fishShape6.style.left = fishLeftPosition6 + 'px';
+    if (fishLeftPosition6 <= -480) {
+    fishLeftPosition6 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape6); // 애니메이션 계속 실행
+}
+  moveFishShape6(); // 애니메이션 시작
+
+  // FishShape7 이미지 움직임
+  const fishShape7 = document.querySelector('.fish-shape7');
+  let fishLeftPosition7 = 200; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape7() {
+    fishLeftPosition7 -= 1.2; // 이동 속도 설정 (2px씩 감소)
+    fishShape7.style.left = fishLeftPosition7 + 'px';
+    if (fishLeftPosition7 <= -280) {
+    fishLeftPosition7 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape7); // 애니메이션 계속 실행
+}
+  moveFishShape7(); // 애니메이션 시작
+
+  // FishShape8 이미지 움직임
+  const fishShape8 = document.querySelector('.fish-shape8');
+  let fishLeftPosition8 = 300; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape8() {
+    fishLeftPosition8 -= 0.6; // 이동 속도 설정 (2px씩 감소)
+    fishShape8.style.left = fishLeftPosition8 + 'px';
+    if (fishLeftPosition8 <= -280) {
+    fishLeftPosition8 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape8); // 애니메이션 계속 실행
+}
+  moveFishShape8(); // 애니메이션 시작
+
+  // FishShape9 이미지 움직임
+  const fishShape9 = document.querySelector('.fish-shape9');
+  let fishLeftPosition9 = 800; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape9() {
+    fishLeftPosition9 -= 0.6; // 이동 속도 설정 (3px씩 감소)
+    fishShape9.style.left = fishLeftPosition9 + 'px';
+    if (fishLeftPosition9 <= -320) {
+    fishLeftPosition9 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape9); // 애니메이션 계속 실행
+}
+  moveFishShape9(); // 애니메이션 시작
+
+  // FishShape10 이미지 움직임
+  const fishShape10 = document.querySelector('.fish-shape10');
+  let fishLeftPosition10 = 400; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape10() {
+    fishLeftPosition10 -= 1.0; // 이동 속도 설정 (2px씩 감소)
+    fishShape10.style.left = fishLeftPosition10 + 'px';
+    if (fishLeftPosition10 <= -280) {
+    fishLeftPosition10 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape10); // 애니메이션 계속 실행
+}
+  moveFishShape10(); // 애니메이션 시작
+
+  // FishShape11 이미지 움직임
+  const fishShape11 = document.querySelector('.fish-shape11');
+  let fishLeftPosition11 = window.innerWidth; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape11() {
+    fishLeftPosition11 -= 0.5; // 이동 속도 설정 (3px씩 감소)
+    fishShape11.style.left = fishLeftPosition11 + 'px';
+    // fishLeftPosition1이 -280 이하가 되면 위치를 초기화하고 애니메이션을 다시 시작
+  if (fishLeftPosition11 <= -280) {
+    fishLeftPosition11 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape11); // 애니메이션 계속 실행
+}
+  moveFishShape11(); // 애니메이션 시작
+
+  // FishShape12 이미지 움직임
+  const fishShape12 = document.querySelector('.fish-shape12');
+  let fishLeftPosition12 = 1000; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape12() {
+    fishLeftPosition12 -= 0.7; // 이동 속도 설정 (2px씩 감소)
+    fishShape12.style.left = fishLeftPosition12 + 'px';
+    // fishLeftPosition1이 -280 이하가 되면 위치를 초기화하고 애니메이션을 다시 시작
+  if (fishLeftPosition12 <= -280) {
+    fishLeftPosition12 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape12); // 애니메이션 계속 실행
+}
+  moveFishShape12(); // 애니메이션 시작
+
+  // FishShape13 이미지 움직임
+  const fishShape13 = document.querySelector('.fish-shape13');
+  let fishLeftPosition13 = 900; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape13() {
+    fishLeftPosition13 -= 0.6; // 이동 속도 설정 (3px씩 감소)
+    fishShape13.style.left = fishLeftPosition13 + 'px';
+    // fishLeftPosition1이 -280 이하가 되면 위치를 초기화하고 애니메이션을 다시 시작
+  if (fishLeftPosition13 <= -280) {
+    fishLeftPosition13 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape13); // 애니메이션 계속 실행
+}
+  moveFishShape13(); // 애니메이션 시작
+
+  // FishShape14 이미지 움직임
+  const fishShape14 = document.querySelector('.fish-shape14');
+  let fishLeftPosition14 = 100; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape14() {
+    fishLeftPosition14 -= 1.0; // 이동 속도 설정 (2px씩 감소)
+    fishShape14.style.left = fishLeftPosition14 + 'px';
+    // fishLeftPosition1이 -280 이하가 되면 위치를 초기화하고 애니메이션을 다시 시작
+  if (fishLeftPosition14 <= -280) {
+    fishLeftPosition14 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape14); // 애니메이션 계속 실행
+}
+  moveFishShape14(); // 애니메이션 시작
+
+  // FishShape15 이미지 움직임
+  const fishShape15 = document.querySelector('.fish-shape15');
+  let fishLeftPosition15 = 300; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape15() {
+    fishLeftPosition15 -= 0.8; // 이동 속도 설정 (3px씩 감소)
+    fishShape15.style.left = fishLeftPosition15 + 'px';
+// fishLeftPosition1이 -280 이하가 되면 위치를 초기화하고 애니메이션을 다시 시작
+  if (fishLeftPosition15 <= -370) {
+    fishLeftPosition15 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape15); // 애니메이션 계속 실행
+}
+  moveFishShape15(); // 애니메이션 시작
+
+  // FishShape16 이미지 움직임
+  const fishShape16 = document.querySelector('.fish-shape16');
+  let fishLeftPosition16 = 600; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape16() {
+    fishLeftPosition16 -= 0.8; // 이동 속도 설정 (2px씩 감소)
+    fishShape16.style.left = fishLeftPosition16 + 'px';
+// fishLeftPosition1이 -280 이하가 되면 위치를 초기화하고 애니메이션을 다시 시작
+  if (fishLeftPosition16 <= -280) {
+    fishLeftPosition16 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape16); // 애니메이션 계속 실행
+}
+  moveFishShape16(); // 애니메이션 시작
+
+  // FishShape17 이미지 움직임
+  const fishShape17 = document.querySelector('.fish-shape17');
+  let fishLeftPosition17 = 650; // 초기 위치: 화면 오른쪽 밖
+  function moveFishShape17() {
+    fishLeftPosition17 -= 0.4; // 이동 속도 설정 (4px씩 감소)
+    fishShape17.style.left = fishLeftPosition17 + 'px';
+// fishLeftPosition1이 -280 이하가 되면 위치를 초기화하고 애니메이션을 다시 시작
+  if (fishLeftPosition17 <= -450) {
+    fishLeftPosition17 = window.innerWidth; // 오른쪽 끝에서 다시 시작
+  }
+
+  requestAnimationFrame(moveFishShape17); // 애니메이션 계속 실행
+}
+  moveFishShape17(); // 애니메이션 시작
+</script>
+
+
+</body>
+</html>
