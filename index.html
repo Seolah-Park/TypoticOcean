@@ -23,6 +23,21 @@
       width: 100%;  /* 화면의 크기에 맞게 조정 */
       height: 100%; /* 화면의 크기에 맞게 조정 */
       object-fit: contain; /* 비율을 유지하며 꽉 차지 않게 설정 */
+      animation: gifAnimation 3s forwards;
+      animation-play-state: paused; /* 애니메이션을 정지 상태로 설정 */
+    }
+
+    /* 애니메이션 정의 */
+    @keyframes gifAnimation {
+      0% {
+        opacity: 0;
+      }
+      33% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -37,13 +52,13 @@
     gifElement.onload = function() {
       // 첫 번째 프레임 2초 정지
       setTimeout(function() {
-        // GIF 애니메이션 재생
-        gifElement.style.animation = "gifAnimation 4s forwards";
+        // 애니메이션을 시작
+        gifElement.style.animationPlayState = "running"; // 애니메이션을 실행 상태로 변경
       }, 2000); // 첫 번째 프레임 정지 2초 후 재생 시작
     };
 
     // 페이지 이동을 위한 타이머
-    const gifDuration = 8 * 1000; // 총 10초 (2초 정지 + 4초 재생 + 4초 정지)
+    const gifDuration = 8 * 1000; // 총 8초 (2초 정지 + 3초 재생 + 3초 정지)
 
     setTimeout(function() {
       // TypoticOcean.html로 이동
@@ -52,6 +67,7 @@
   </script>
 </body>
 </html>
+
 
 
 
