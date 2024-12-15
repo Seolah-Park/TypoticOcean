@@ -60,7 +60,7 @@
       left: 100%; /* 화면 오른쪽 밖에서 시작 */
       width: 250px;
       height: auto;
-      
+      cursor: pointer;
     }
 
     .fish-shape2 {
@@ -69,6 +69,7 @@
       left: 100%; /* 화면 오른쪽 밖에서 시작 */
       width: 320px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape3 {
@@ -77,6 +78,7 @@
       left: 30%;  /* 가운데 정렬 */
       width: 300px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape4 {
@@ -85,6 +87,7 @@
       left: 80%;
       width: 300px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape5 {
@@ -93,6 +96,7 @@
       left: 30%;
       width: 100px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape6 {
@@ -101,6 +105,7 @@
       left: 30%;
       width: 350px;
       height: auto;
+      cursor: pointer;
     }
 
 /*여기부터 심해어*/
@@ -110,6 +115,7 @@
       left: 50%;
       width: 250px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape8 {
@@ -118,6 +124,7 @@
       left: 50%;
       width: 280px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape9 {
@@ -126,6 +133,7 @@
       left: 50%;
       width: 320px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape10 {
@@ -134,6 +142,7 @@
       left: 50%;
       width: 240px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape11 {
@@ -142,6 +151,7 @@
       left: 50%;
       width: 320px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape12 {
@@ -150,6 +160,7 @@
       left: 50%;
       width: 270px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape13 {
@@ -158,6 +169,7 @@
       left: 30%;
       width: 280px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape14 {
@@ -166,6 +178,7 @@
       left: 80%;
       width: 320px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape15 {
@@ -174,6 +187,7 @@
       left: 60%;
       width: 240px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape16 {
@@ -182,6 +196,7 @@
       left: 40%;
       width: 280px;
       height: auto;
+      cursor: pointer;
     }
 
     .fish-shape17 {
@@ -190,6 +205,7 @@
       left: 60%;
       width: 430px;
       height: auto;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -483,7 +499,7 @@ moveFishShape3(); // 애니메이션 시작
     fishLeftPosition15 -= 0.8; // 이동 속도 설정 (3px씩 감소)
     fishShape15.style.left = fishLeftPosition15 + 'px';
 // fishLeftPosition1이 -280 이하가 되면 위치를 초기화하고 애니메이션을 다시 시작
-  if (fishLeftPosition15 <= -370) {
+  if (fishLeftPosition15 <= -400) {
     fishLeftPosition15 = window.innerWidth; // 오른쪽 끝에서 다시 시작
   }
 
@@ -520,6 +536,48 @@ moveFishShape3(); // 애니메이션 시작
   requestAnimationFrame(moveFishShape17); // 애니메이션 계속 실행
 }
   moveFishShape17(); // 애니메이션 시작
+
+
+ // SideBackground 이미지를 위한 설정
+const sideBackgrounds = []; // 이미지를 담을 배열
+
+// 이미지 설정 (Side1, Side2, Side3, ...)
+for (let i = 1; i <= 17; i++) { // 예시로 5개 이미지까지 설정
+  const sideBackground = document.createElement('img');
+  sideBackground.src = `Side${i}.png`; // 이미지 경로 설정
+  sideBackground.style.position = 'fixed';
+  sideBackground.style.top = '50%'; // 화면 가운데 정렬
+  sideBackground.style.right = '0%'; //
+  sideBackground.style.transform = 'translateY(-50%)'; // 세로 중앙으로 정렬 (가로 이동 제거)
+  sideBackground.style.display = 'none'; // 처음에는 보이지 않게 설정
+  sideBackground.style.zIndex = '1001'; // 가장 위에 표시
+  sideBackground.style.height = '980px'; // 세로 크기 고정
+  sideBackground.style.width = 'auto'; // 가로세로 비율 유지
+  document.body.appendChild(sideBackground); // body에 추가
+
+  // 배열에 추가
+  sideBackgrounds.push(sideBackground);
+}
+
+// fish-shape 클릭 시 해당 이미지 표시/숨기기
+for (let i = 1; i <= 17; i++) { // fish-shape1, fish-shape2, ... 처리
+  const fishShapes = document.querySelectorAll(`.fish-shape${i}`);
+  fishShapes.forEach(fish => {
+    fish.addEventListener('click', () => {
+      // 클릭한 이미지가 닫히지 않았으면
+      if (sideBackgrounds[i - 1].style.display === 'none') {
+        // 모든 이미지를 숨기기
+        sideBackgrounds.forEach(img => img.style.display = 'none');
+        // 클릭한 이미지는 보이게 설정
+        sideBackgrounds[i - 1].style.display = 'block';
+      } else {
+        // 이미 열려있는 이미지를 숨기기
+        sideBackgrounds[i - 1].style.display = 'none';
+      }
+    });
+  });
+}
+
 </script>
 
 
