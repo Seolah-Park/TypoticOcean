@@ -206,6 +206,7 @@
       width: 430px;
       height: auto;
       cursor: pointer;
+
     }
   </style>
 </head>
@@ -288,6 +289,7 @@
         }
       });
     };
+
 
   // FishShape1 이미지 움직임
   const fishShape1 = document.querySelector('.fish-shape1');
@@ -538,48 +540,219 @@ moveFishShape3(); // 애니메이션 시작
   moveFishShape17(); // 애니메이션 시작
 
 
- // SideBackground 이미지를 위한 설정
+// SideBackground 이미지를 위한 설정
 const sideBackgrounds = []; // 이미지를 담을 배열
 
 // 이미지 설정 (Side1, Side2, Side3, ...)
-for (let i = 1; i <= 17; i++) { // 예시로 5개 이미지까지 설정
+for (let i = 1; i <= 17; i++) { // 예시로 17개 이미지까지 설정
   const sideBackground = document.createElement('img');
   sideBackground.src = `Side${i}.png`; // 이미지 경로 설정
   sideBackground.style.position = 'fixed';
   sideBackground.style.top = '50%'; // 화면 가운데 정렬
-  sideBackground.style.right = '0%'; //
-  sideBackground.style.transform = 'translateY(-50%)'; // 세로 중앙으로 정렬 (가로 이동 제거)
-  sideBackground.style.display = 'none'; // 처음에는 보이지 않게 설정
+  sideBackground.style.right = '-450px'; // 처음에 오른쪽 바깥으로 위치
+  sideBackground.style.transform = 'translateY(-50%)'; // 세로 중앙 정렬
   sideBackground.style.zIndex = '1001'; // 가장 위에 표시
   sideBackground.style.height = '980px'; // 세로 크기 고정
   sideBackground.style.width = 'auto'; // 가로세로 비율 유지
+  sideBackground.style.transition = 'right 1.0s ease'; // 이동 속도를 천천히
   document.body.appendChild(sideBackground); // body에 추가
 
   // 배열에 추가
   sideBackgrounds.push(sideBackground);
 }
 
+
 // fish-shape 클릭 시 해당 이미지 표시/숨기기
 for (let i = 1; i <= 17; i++) { // fish-shape1, fish-shape2, ... 처리
   const fishShapes = document.querySelectorAll(`.fish-shape${i}`);
   fishShapes.forEach(fish => {
     fish.addEventListener('click', () => {
-      // 클릭한 이미지가 닫히지 않았으면
-      if (sideBackgrounds[i - 1].style.display === 'none') {
-        // 모든 이미지를 숨기기
-        sideBackgrounds.forEach(img => img.style.display = 'none');
-        // 클릭한 이미지는 보이게 설정
-        sideBackgrounds[i - 1].style.display = 'block';
+      // 모든 이미지를 초기 상태로 되돌리기
+      sideBackgrounds.forEach((img, index) => {
+        if (index !== i - 1) {
+          img.style.right = '-450px'; // 오른쪽으로 이동 (처음 상태)
+          img.style.display = 'none'; // 숨기기
+        }
+      });
+
+      const selectedImage = sideBackgrounds[i - 1];
+
+      // 클릭한 이미지가 보이는 상태인지 확인
+      if (selectedImage.style.right === '0px') {
+        // 보이는 상태면 오른쪽으로 이동 (처음 상태)
+        selectedImage.style.right = '-450px';
       } else {
-        // 이미 열려있는 이미지를 숨기기
-        sideBackgrounds[i - 1].style.display = 'none';
+        // 숨겨져 있는 상태면 보이게 설정
+        selectedImage.style.display = 'block';
+        selectedImage.style.right = '0'; // 왼쪽으로 이동
       }
     });
   });
 }
 
+// 각 mok 이미지를 담을 배열
+const mokImages = []; 
+
+// mok 이미지 설정
+const mok1 = document.createElement('img');
+mok1.src = 'mok1.png';
+mok1.style.position = 'fixed';
+mok1.style.display = 'none'; // 초기에는 보이지 않게 설정
+mok1.style.zIndex = '1003'; 
+mok1.style.width = '300px'; // 크기를 1.5배로 확대 (기존의 200px * 1.5)
+mok1.style.height = 'auto'; // 높이는 비율에 맞게 자동 조정
+mok1.style.top = '50%';
+mok1.style.transform = 'translateY(-50%)'; // 세로 중앙 정렬
+document.body.appendChild(mok1);
+
+const mok2 = document.createElement('img');
+mok2.src = 'mok2.png';
+mok2.style.position = 'fixed';
+mok2.style.display = 'none'; // 초기에는 보이지 않게 설정
+mok2.style.zIndex = '1003'; 
+mok2.style.width = '300px'; // 크기를 1.5배로 확대
+mok2.style.height = 'auto'; 
+mok2.style.top = '50%';
+mok2.style.transform = 'translateY(-50%)';
+document.body.appendChild(mok2);
+
+const mok3 = document.createElement('img');
+mok3.src = 'mok3.png';
+mok3.style.position = 'fixed';
+mok3.style.display = 'none'; // 초기에는 보이지 않게 설정
+mok3.style.zIndex = '1003'; 
+mok3.style.width = '300px'; // 크기를 1.5배로 확대
+mok3.style.height = 'auto'; 
+mok3.style.top = '50%';
+mok3.style.transform = 'translateY(-50%)';
+document.body.appendChild(mok3);
+
+const mok4 = document.createElement('img');
+mok4.src = 'mok4.png';
+mok4.style.position = 'fixed';
+mok4.style.display = 'none'; // 초기에는 보이지 않게 설정
+mok4.style.zIndex = '1003'; 
+mok4.style.width = '300px'; // 크기를 1.5배로 확대
+mok4.style.height = 'auto'; 
+mok4.style.top = '50%';
+mok4.style.transform = 'translateY(-50%)';
+document.body.appendChild(mok4);
+
+// sideBackgrounds에 click 이벤트 추가
+sideBackgrounds.forEach((sideBackground, index) => {
+  // sideBackground 영역에 마우스를 올리면 커서 모양 변경
+  sideBackground.style.cursor = 'pointer';
+
+  let mokImage; // 현재 보이는 mok 이미지
+
+  sideBackground.addEventListener('click', () => {
+    // 클릭 시 해당하는 mok 이미지 설정
+    if ([0, 1, 11].includes(index)) {
+      mokImage = mok1;
+    }
+    else if ([4, 5, 7, 8, 10, 12].includes(index)) {
+      mokImage = mok2;
+    }
+    else if ([2, 3, 6, 8, 9, 15].includes(index)) {
+      mokImage = mok3;
+    }
+    else if ([13, 14, 16].includes(index)) {
+      mokImage = mok4;
+    }
+
+    // mok 이미지가 이미 보이면 숨기기
+    if (mokImage.style.display === 'block') {
+      mokImage.style.display = 'none';
+      clearTimeout(mokImage.timeout); // 타이머 초기화 (사라지는 타이머 취소)
+    } else {
+      // 숨겨져 있으면 보이게 설정
+      mokImage.style.display = 'block';
+      // 위치 설정 (각각의 sideBackground의 중앙에 맞추어 mok 이미지 위치 설정)
+      const sideRect = sideBackground.getBoundingClientRect();
+      const mokWidth = mokImage.offsetWidth;
+      const mokLeft = sideRect.left + (sideRect.width - mokWidth) / 2; // 중앙 정렬
+      mokImage.style.left = `${mokLeft}px`;
+
+      // 1.3초 후에 mok 이미지를 숨기기
+      mokImage.timeout = setTimeout(() => {
+        mokImage.style.display = 'none';
+      }, 1300); // 1300ms = 1.3초
+    }
+  });
+});
+
+
+
+// 이미지 생성 및 초기 설정
+const depth1 = document.createElement('img');
+depth1.src = 'Depth1.png'; // 이미지 경로 설정
+depth1.style.position = 'fixed';
+depth1.style.top = '50%';
+depth1.style.left = '50%';
+depth1.style.transform = 'translate(-50%, -50%)'; // 화면 정중앙
+depth1.style.zIndex = '1001';
+depth1.style.height = '95px'; // 크기 설정
+depth1.style.width = 'auto';
+depth1.style.opacity = '0'; // 초기에는 보이지 않음
+depth1.style.transition = 'opacity 1s ease'; // 서서히 사라지는 효과
+document.body.appendChild(depth1);
+
+const depth2 = document.createElement('img');
+depth2.src = 'Depth2.png'; // 이미지 경로 설정
+depth2.style.position = 'fixed';
+depth2.style.top = '50%';
+depth2.style.left = '50%';
+depth2.style.transform = 'translate(-50%, -50%)'; // 화면 정중앙
+depth2.style.zIndex = '1001';
+depth2.style.height = '95px'; // 크기 설정
+depth2.style.width = 'auto';
+depth2.style.opacity = '0'; // 초기에는 보이지 않음
+depth2.style.transition = 'opacity 1s ease'; // 서서히 사라지는 효과
+document.body.appendChild(depth2);
+
+// 상태 추적 변수
+let depth1Shown = false;
+let depth2Shown = false;
+let timeoutId = null; // 이미지가 고정되는 동안 중복 실행 방지
+
+// 스크롤 이벤트 핸들러
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY; // 현재 스크롤 위치
+  const windowHeight = window.innerHeight; // 화면 높이
+
+  // 화면의 150% 이상 스크롤 시 Depth2 표시
+  if (scrollPosition > windowHeight * 1.8 && !depth2Shown) {
+    if (timeoutId) return; // 중복 실행 방지
+    depth1.style.opacity = '0'; // Depth1 숨기기
+    depth2.style.opacity = '1'; // Depth2 표시
+    depth2Shown = true; // Depth2 표시 상태로 설정
+    timeoutId = setTimeout(() => {
+      depth2.style.opacity = '0'; // 서서히 사라짐
+      timeoutId = null; // 다시 트리거 가능
+    }, 800); // 1.5초 후에 사라지게 설정
+  } 
+  // 화면의 150% 미만으로 내려왔을 때 Depth1 표시
+  else if (scrollPosition <= windowHeight * 1.8 && !depth1Shown) {
+    if (timeoutId) return; // 중복 실행 방지
+    depth2.style.opacity = '0'; // Depth2 숨기기
+    depth1.style.opacity = '1'; // Depth1 표시
+    depth1Shown = true; // Depth1 표시 상태로 설정
+    timeoutId = setTimeout(() => {
+      depth1.style.opacity = '0'; // 서서히 사라짐
+      timeoutId = null; // 다시 트리거 가능
+    }, 800); // 1.5초 후에 사라지게 설정
+  }
+
+  // 스크롤이 내려가면 표시된 이미지 초기화
+  if (scrollPosition <= windowHeight * 1.8 && depth1Shown) {
+    depth1Shown = false; // Depth1 상태 리셋
+  }
+  if (scrollPosition > windowHeight * 1.8 && depth2Shown) {
+    depth2Shown = false; // Depth2 상태 리셋
+  }
+});
+
+
 </script>
-
-
 </body>
 </html>
